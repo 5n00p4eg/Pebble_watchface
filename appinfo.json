@@ -1,0 +1,33 @@
+{
+    "appKeys": {
+        "KEY_CONDITIONS": 1,
+        "KEY_TEMPERATURE": 0
+    },
+    "capabilities": [
+        "location"
+    ],
+    "companyName": "dboyko",
+    "longName": "Tut1",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "fonts/OpenSans-Regular.ttf",
+                "name": "FONT_OPENSANS_REGULAR_20",
+                "type": "font"
+            },
+            {
+                "file": "fonts/OpenSans-Regular.ttf",
+                "name": "FONT_OPENSANS_REGULAR_44",
+                "type": "font"
+            }
+        ]
+    },
+    "shortName": "Tut1",
+    "uuid": "32aa376a-cb01-4cae-8f5f-1fd38a04bc45",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
