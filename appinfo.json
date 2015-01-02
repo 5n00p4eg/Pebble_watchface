@@ -13,12 +13,12 @@
         "media": [
             {
                 "file": "fonts/OpenSans-Regular.ttf",
-                "name": "FONT_OPENSANS_REGULAR_20",
+                "name": "FONT_OPENSANS_REGULAR_44",
                 "type": "font"
             },
             {
                 "file": "fonts/OpenSans-Regular.ttf",
-                "name": "FONT_OPENSANS_REGULAR_44",
+                "name": "FONT_OPENSANS_REGULAR_20",
                 "type": "font"
             }
         ]
