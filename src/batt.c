@@ -46,9 +46,9 @@ void batt_init() {
   settings.color_margin    = GColorBlack;
   settings.color_padding   = GColorWhite;
   settings.color_bounds    = GColorWhite;
-  settings.outline_width   = 3;
+  settings.outline_width   = 1;
   settings.outline_color   = GColorBlack;
-  settings.outline_padding = get_spacing_all(2);
+  settings.outline_padding = get_spacing_all(1);
   settings.term            = true;
 }
 
@@ -158,13 +158,51 @@ void batt_layer_draw(struct Layer *layer, GContext *ctx) {
     graphics_draw_rect(ctx, outline_rect);
     outline_rect = layout_make_padding(outline_rect, get_spacing_all(1));
   }
+  //Outline padding.
+  GRect outline_padding_rect = layout_make_padding(outline_rect, settings.outline_padding);
+  //outline_padding_rect       = layout_make_padding(outline_padding_rect, )
+  
+  //Charge level
+  BatteryChargeState battery_state = battery_state_service_peek();
+  //Charge 
+  
+  GRect charge_level_rect = outline_padding_rect;
+  
+  struct spacing charge_level_missing = {0,0,0,0};
+  int missing = 100 - battery_state.charge_percent;
+  switch (settings.orientation) {
+    case C_BATT_ORIENT_PT:
+      charge_level_missing.top = charge_level_rect.size.h * missing / 100;
+      break;
+    case C_BATT_ORIENT_PB:
+      charge_level_missing.bottom = charge_level_rect.size.h * missing / 100;
+      break;
+    case C_BATT_ORIENT_LL:
+      charge_level_missing.left = charge_level_rect.size.w * missing / 100;
+      break;
+    case C_BATT_ORIENT_LR:
+      charge_level_missing.left = charge_level_rect.size.w * missing / 100;
+      break;
+    default:
+      charge_level_missing.top = charge_level_rect.size.h * missing / 100;
+  }
+  
+  APP_LOG(APP_LOG_LEVEL_INFO, "charge_level_rect_B: OX:%i, OY:%i, SW:%i, SH:%i", charge_level_rect.origin.x, charge_level_rect.origin.y, charge_level_rect.size.w, charge_level_rect.size.h);
+  
+  //Clear bar area.
+  graphics_context_set_fill_color(ctx, GColorWhite);
+  graphics_fill_rect(ctx, charge_level_rect, 0, GCornerNone);
+  
+  charge_level_rect = layout_make_padding(charge_level_rect, charge_level_missing);
+  APP_LOG(APP_LOG_LEVEL_INFO, "charge_level_rect_E: OX:%i, OY:%i, SW:%i, SH:%i", charge_level_rect.origin.x, charge_level_rect.origin.y, charge_level_rect.size.w, charge_level_rect.size.h);
   
   
-  APP_LOG(APP_LOG_LEVEL_INFO, "BOUNDS: OX:%i, OY:%i, SW:%i, SH:%i", bounds.origin.x, bounds.origin.y, bounds.size.w, bounds.size.h);
-  /*
   graphics_context_set_fill_color(ctx, GColorBlack);
-  graphics_fill_rect(ctx, bounds, 0, GCornerNone);
-  */
+  graphics_fill_rect(ctx, charge_level_rect, 0, GCornerNone);
+  
+  APP_LOG(APP_LOG_LEVEL_INFO, "Charge level: %i",  battery_state.charge_percent);
+  
+ 
 
 }
 
@@ -180,9 +218,6 @@ void batt_render(BatteryChargeState charge) {
   
   
   //Define geometry/options:
-  // width
-  // height
-  // Outline or not
   // Show text or bars.
   // Spaces between bars and outline.
   // Spaces between bars.

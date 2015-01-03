@@ -47,7 +47,7 @@ struct spacing get_spacing_each(int top_spacing, int bot_spacing, int left_spaci
 GRect layout_make_padding(GRect base, struct spacing padding) {
   int x   = base.origin.x + padding.left;
   int y   = base.origin.y + padding.top;
-  int w   = base.size.w   - padding.left - padding.rigth;
+  int w   = base.size.w   - padding.left - padding.right;
   int h   = base.size.h   - padding.top  - padding.bottom;
   return GRect(x, y, w, h);
 }

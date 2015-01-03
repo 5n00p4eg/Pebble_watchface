@@ -13,7 +13,7 @@ struct spacing {
   int top;
   int bottom;
   int left;
-  int rigth;
+  int right;
 };
 
 struct spacing get_spacing_all(int all_spacing);
