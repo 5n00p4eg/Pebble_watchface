@@ -28,3 +28,26 @@ GRect get_layout_rect(int region) {
       return GRect(0, 0, 144, 168);
   }
 }
+
+
+struct spacing get_spacing_all(int all_spacing) {
+  struct spacing res =  {all_spacing, all_spacing, all_spacing, all_spacing };
+  return res;
+}
+struct spacing get_spacing_duo(int vert_spacing, int hor_spacing) {
+  struct spacing res = {vert_spacing, vert_spacing, hor_spacing, hor_spacing };
+  return res;
+}
+struct spacing get_spacing_each(int top_spacing, int bot_spacing, int left_spacing, int right_spacing) {
+  struct spacing res = { top_spacing, bot_spacing, left_spacing, right_spacing };
+  return res;
+}
+
+
+GRect layout_make_padding(GRect base, struct spacing padding) {
+  int x   = base.origin.x + padding.left;
+  int y   = base.origin.y + padding.top;
+  int w   = base.size.w   - padding.left - padding.rigth;
+  int h   = base.size.h   - padding.top  - padding.bottom;
+  return GRect(x, y, w, h);
+}
