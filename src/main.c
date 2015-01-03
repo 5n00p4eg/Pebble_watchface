@@ -24,6 +24,7 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
 static void main_window_load(Window *window) {  
   time_main_window_load(window);
   weather_main_window_load(window);
+  batt_main_window_load(window);
 }
 
 static void main_window_unload(Window *window) {
@@ -31,6 +32,7 @@ static void main_window_unload(Window *window) {
   time_main_window_unload(window);
   //Destroy weather
   weather_main_window_unload(window);
+  batt_main_window_unload(window);
   
 }
 
