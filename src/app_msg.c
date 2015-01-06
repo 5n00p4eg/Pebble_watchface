@@ -16,6 +16,7 @@ static void outbox_sent_callback(DictionaryIterator *iterator, void *context) {
 }
 
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
+  //TODO: Move to weather.c module
   // Store incoming information
   static char temperature_buffer[8];
   static char conditions_buffer[32];

@@ -31,7 +31,7 @@ void batt_init() {
 }
 
 void batt_deinit() {
-  battery_state_service_unsubscribe(); //TODO: MOVE TO batt module.
+  battery_state_service_unsubscribe();
 }
 
 //Build window
@@ -142,7 +142,6 @@ void batt_layer_draw(struct Layer *layer, GContext *ctx) {
   
   //Charge level
   BatteryChargeState battery_state = battery_state_service_peek();
-  //Charge 
   
   GRect charge_level_rect = outline_padding_rect;
   
@@ -174,13 +173,14 @@ void batt_layer_draw(struct Layer *layer, GContext *ctx) {
   charge_level_rect = layout_make_padding(charge_level_rect, charge_level_missing);
   APP_LOG(APP_LOG_LEVEL_INFO, "charge_level_rect_E: OX:%i, OY:%i, SW:%i, SH:%i", charge_level_rect.origin.x, charge_level_rect.origin.y, charge_level_rect.size.w, charge_level_rect.size.h);
   
+  //TODO: Draw grid for level bars.
   
   graphics_context_set_fill_color(ctx, GColorBlack);
   graphics_fill_rect(ctx, charge_level_rect, 0, GCornerNone);
   
   APP_LOG(APP_LOG_LEVEL_INFO, "Charge level: %i",  battery_state.charge_percent);
   
- 
+  //TODO: Charging indicator ( or other behavior).
 
 }
 
@@ -219,10 +219,13 @@ void batt_render(BatteryChargeState charge) {
   
   
   //Define geometry/options:
-  // Show text or bars.
+  // Show text and/or bars.
   // Spaces between bars and outline.
   // Spaces between bars.
   // Coloring
+  
+  // TODO: Define function that check, modify, calculate settings.
+  // 
   
   //Calculations
   // Enough space to make padding ?
@@ -240,8 +243,4 @@ void batt_render(BatteryChargeState charge) {
   //Batt level
   // 0, 20, 40, 60, 80, 100 - Full rectangles
   // 10, 30, 50, 70, 90     - Half rectangles
-  // Count full
-  // Count half
-  
-  //Update layer.
 }
