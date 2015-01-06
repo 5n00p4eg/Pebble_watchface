@@ -15,19 +15,6 @@
 static Layer *batt_layer;
 static BatteryChargeState batt_state;
 
-struct batt_settings {
-  struct spacing margin;
-  struct spacing padding;
-  int    orientation;
-  GColor color_margin;
-  GColor color_padding;
-  GColor color_bounds;
-  bool   term;
-  int    outline_width;
-  GColor outline_color;
-  struct spacing outline_padding;
-};
-
 static struct batt_settings settings;
 
 void battery_state_update(BatteryChargeState charge) {
@@ -40,16 +27,7 @@ void batt_init() {
   //Register callback for battery state changes.
   battery_state_service_subscribe(battery_state_update);
   
-  settings.margin          = get_spacing_each(50, 10, 10, 10);
-  settings.padding         = get_spacing_all(3);
-  settings.orientation     = C_BATT_ORIENT_A; //Auto
-  settings.color_margin    = GColorBlack;
-  settings.color_padding   = GColorWhite;
-  settings.color_bounds    = GColorWhite;
-  settings.outline_width   = 1;
-  settings.outline_color   = GColorBlack;
-  settings.outline_padding = get_spacing_all(1);
-  settings.term            = true;
+  settings = batt_get_default_settings();
 }
 
 void batt_deinit() {
@@ -204,6 +182,29 @@ void batt_layer_draw(struct Layer *layer, GContext *ctx) {
   
  
 
+}
+
+void batt_set_settings(struct batt_settings sets) {
+  settings = sets;
+}
+
+struct batt_settings batt_get_settings() {
+  return settings;
+}
+
+struct batt_settings batt_get_default_settings() {
+  struct batt_settings default_settings;
+  default_settings.margin          = get_spacing_each(50, 10, 10, 10);
+  default_settings.padding         = get_spacing_all(3);
+  default_settings.orientation     = C_BATT_ORIENT_A; //Auto
+  default_settings.color_margin    = GColorBlack;
+  default_settings.color_padding   = GColorWhite;
+  default_settings.color_bounds    = GColorWhite;
+  default_settings.outline_width   = 1;
+  default_settings.outline_color   = GColorBlack;
+  default_settings.outline_padding = get_spacing_all(1);
+  default_settings.term            = true;
+  return default_settings;
 }
 
 void batt_render(BatteryChargeState charge) {

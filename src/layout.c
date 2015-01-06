@@ -15,17 +15,18 @@ GRect get_layout_rect(int region) {
     case C_REG_CLOCK:
       return GRect(0, 0, 144, 44);
       break;
-    case C_REG_BAR:
-      return GRect(0, 44, 144, 24);
-      break;
     case C_REG_WEATHER:
       return GRect(0, 70, 72, 100);
       break;
     case C_REG_SPACE:
       return GRect(72,70,72,100);
       break;
+    case C_REG_DATE:
+      return GRect(0, 44, 144, 24);
+      break;
     default:
       return GRect(0, 0, 144, 168);
+      break;
   }
 }
 
