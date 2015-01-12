@@ -11,6 +11,9 @@ function locationSuccess(pos) {
   // Construct URL
   var url = "http://api.openweathermap.org/data/2.5/weather?lat=" +
       pos.coords.latitude + "&lon=" + pos.coords.longitude;
+  
+  //Debug JSON respone
+  console.log(url);
 
   // Send request to OpenWeatherMap
   xhrRequest(url, 'GET', 

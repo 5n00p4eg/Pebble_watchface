@@ -12,6 +12,16 @@
     "resources": {
         "media": [
             {
+                "file": "fonts/weathericons-regular-webfont.ttf",
+                "name": "FONT_WEATHER_48",
+                "type": "font"
+            },
+            {
+                "file": "fonts/weathericons-regular-webfont.ttf",
+                "name": "FONT_WEATHER_24",
+                "type": "font"
+            },
+            {
                 "file": "fonts/OpenSans-Regular.ttf",
                 "name": "FONT_OPENSANS_REGULAR_44",
                 "type": "font"
