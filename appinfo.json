@@ -13,11 +13,6 @@
         "media": [
             {
                 "file": "fonts/weathericons-regular-webfont.ttf",
-                "name": "FONT_WEATHER_48",
-                "type": "font"
-            },
-            {
-                "file": "fonts/weathericons-regular-webfont.ttf",
                 "name": "FONT_WEATHER_24",
                 "type": "font"
             },
