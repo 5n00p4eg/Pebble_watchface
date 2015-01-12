@@ -16,12 +16,7 @@ static void outbox_sent_callback(DictionaryIterator *iterator, void *context) {
 }
 
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
-  //TODO: Move to weather.c module
-  // Store incoming information
-  static char temperature_buffer[8];
-  static char conditions_buffer[32];
-  static char weather_layer_buffer[32];
-  
+ 
   // Read first item
   Tuple *t = dict_read_first(iterator);
 
@@ -30,10 +25,9 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
     // Which key was received?
     switch(t->key) {
     case KEY_TEMPERATURE:
-      snprintf(temperature_buffer, sizeof(temperature_buffer), "%dC", (int)t->value->int32);
-      break;
     case KEY_CONDITIONS:
-      snprintf(conditions_buffer, sizeof(conditions_buffer), "%s", t->value->cstring);
+    case KEY_ICON:
+      weather_app_msg_recive(t);
       break;
     default:
       APP_LOG(APP_LOG_LEVEL_ERROR, "Key %d not recognized!", (int)t->key);
@@ -43,10 +37,6 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
     // Look for next item
     t = dict_read_next(iterator);
   }
-  
-  // Assemble full string and display
-  snprintf(weather_layer_buffer, sizeof(weather_layer_buffer), "%s, %s", temperature_buffer, conditions_buffer);
-  text_layer_set_text(s_weather_layer, weather_layer_buffer);
 }
 
 

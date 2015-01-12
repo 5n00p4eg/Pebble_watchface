@@ -1,7 +1,8 @@
 {
     "appKeys": {
         "KEY_CONDITIONS": 1,
-        "KEY_TEMPERATURE": 0
+        "KEY_TEMPERATURE": 0,
+        "KEY_ICON": 2
     },
     "capabilities": [
         "location"
@@ -14,7 +15,8 @@
             {
                 "file": "fonts/weathericons-regular-webfont.ttf",
                 "name": "FONT_WEATHER_24",
-                "type": "font"
+                "type": "font",
+                "compatibility": "2.7"
             },
             {
                 "file": "fonts/OpenSans-Regular.ttf",
