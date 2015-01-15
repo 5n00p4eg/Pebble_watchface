@@ -14,9 +14,9 @@
         "media": [
             {
                 "file": "fonts/weathericons-regular-webfont.ttf",
-                "name": "FONT_WEATHER_24",
+                "name": "FONT_WEATHER_42",
                 "type": "font",
-                "compatibility": "2.7"
+                "characterRegex": "[\uF000-\uF0C3]"
             },
             {
                 "file": "fonts/OpenSans-Regular.ttf",

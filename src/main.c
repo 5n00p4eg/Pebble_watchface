@@ -27,17 +27,17 @@ static void main_window_load(Window *window) {
   //TODO: Move layout date to this point, modules don't need to know where it's layer placed.
   time_main_window_load(window);
   date_main_window_load(window);
-  weather_main_window_load(window);
   batt_main_window_load(window);
+  weather_main_window_load(window);
 }
 
 static void main_window_unload(Window *window) {
   //Destroy time
   time_main_window_unload(window);
   date_main_window_load(window);
+  batt_main_window_unload(window);
   //Destroy weather
   weather_main_window_unload(window);
-  batt_main_window_unload(window);
   
 }
 

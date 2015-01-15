@@ -69,4 +69,3 @@ void app_msg_init() {
 void app_msg_deinit() {
   
 }
-
