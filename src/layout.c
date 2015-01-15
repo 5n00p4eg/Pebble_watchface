@@ -9,10 +9,10 @@ GRect get_layout_rect(int region) {
       return GRect(0, 0, 144, 44);
       break;
     case C_REG_WEATHER:
-      return GRect(0, 70, 72, 40);
+      return GRect(0, 70, 48, 40);
       break;
     case C_REG_WEATHER_ICON:
-      return GRect(0, 110, 72, 168-110);
+      return GRect(0, 110, 58, 168-110); //Width must be 48.
       break;
     case C_REG_BATT:
       return GRect(144-40,44,40,20);
