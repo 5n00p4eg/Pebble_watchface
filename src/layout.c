@@ -4,13 +4,6 @@
 #define C_DISP_WIDTH  144
 #define C_DIST_HEIGHT 168
 GRect get_layout_rect(int region) {
-  /*
-   *  ___TIME___
-   *  ___BAR____
-   *  weat|_____
-   *  her_|_____
-   */
- 
   switch (region) {
     case C_REG_CLOCK:
       return GRect(0, 0, 144, 44);
@@ -21,18 +14,17 @@ GRect get_layout_rect(int region) {
     case C_REG_WEATHER_ICON:
       return GRect(0, 110, 72, 168-110);
       break;
-    case C_REG_SPACE:
-      return GRect(72,70,72,100);
+    case C_REG_BATT:
+      return GRect(144-40,44,40,20);
       break;
     case C_REG_DATE:
-      return GRect(0, 44, 144, 24);
+      return GRect(0, 44, 144-40, 20);
       break;
     default:
       return GRect(0, 0, 144, 168);
       break;
   }
 }
-
 
 struct spacing get_spacing_all(int all_spacing) {
   struct spacing res =  {all_spacing, all_spacing, all_spacing, all_spacing };

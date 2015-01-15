@@ -47,6 +47,11 @@ static void init() {
   tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
   
   batt_init();
+  //TODO: Set battery settings 
+  struct batt_settings bat_sets = batt_get_default_settings();
+  bat_sets.margin = get_spacing_each(1,1,1,3);
+  bat_sets.color_margin = GColorWhite;
+  batt_set_settings(bat_sets);
   app_msg_init();
   
   s_main_window = window_create();
