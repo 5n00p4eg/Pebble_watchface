@@ -37,7 +37,7 @@ void batt_deinit() {
 //Build window
 
 void batt_main_window_load(Window *window) {
-  GRect frame = get_layout_rect(C_REG_SPACE); 
+  GRect frame = get_layout_rect(C_REG_BATT); 
   batt_layer = layer_create(frame);
   layer_set_update_proc(batt_layer, batt_layer_draw);
   layer_add_child(window_get_root_layer(window), batt_layer);
@@ -194,8 +194,8 @@ struct batt_settings batt_get_settings() {
 
 struct batt_settings batt_get_default_settings() {
   struct batt_settings default_settings;
-  default_settings.margin          = get_spacing_each(50, 10, 10, 10);
-  default_settings.padding         = get_spacing_all(3);
+  default_settings.margin          = get_spacing_all(0);
+  default_settings.padding         = get_spacing_all(0);
   default_settings.orientation     = C_BATT_ORIENT_A; //Auto
   default_settings.color_margin    = GColorBlack;
   default_settings.color_padding   = GColorWhite;

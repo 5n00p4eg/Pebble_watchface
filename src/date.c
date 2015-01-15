@@ -19,9 +19,8 @@ void date_main_window_load(Window *window) {
   date_layer = layer_create(get_layout_rect(C_REG_DATE));
   date_text_layer = text_layer_create(layer_get_bounds(date_layer));
   
-  text_layer_set_text_alignment(date_text_layer, GTextAlignmentCenter ); 
-  text_layer_set_text(date_text_layer, "Init");
-  
+  text_layer_set_text_alignment(date_text_layer, GTextAlignmentCenter );  
+
   layer_add_child(date_layer, text_layer_get_layer(date_text_layer));
   layer_add_child(window_get_root_layer(window), date_layer);
 
